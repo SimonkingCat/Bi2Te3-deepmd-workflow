@@ -1,0 +1,35 @@
+read_restart yahen.restart
+#-----------------------------压痕实现-----------------------
+variable        depth equal 30    #压入深度为30埃
+variable        distance equal 10 #压头与表面的初始距离为10埃
+variable        loadv equal 0.1  #加载速度为0.1埃/ps
+variable        load_step equal (v_depth+v_distance)/v_loadv/(${tstp})
+variable        hold_step equal 20000 
+###计算压入深度
+variable      dis equal xcm(tool,z)
+variable        initial_dis equal ${dis}    
+variable        disp equal -(v_dis-(${initial_dis}))
+###计算压入载荷
+#方法一
+variable      m1 equal fcm(tool,z)           #用压头质心的受力计算载荷
+variable        unit equal 1.602*1.0e-3        #单位换算成μN
+variable        load1 equal v_m1*(${unit})
+#方法二
+compute       forcez tool property/atom fz     
+compute        m2 tool reduce sum c_forcez   #也可以用压头z方向受到的合力计算载荷
+variable        load2 equal c_m2*(${unit})
+#----------------------------------加载过程-------------------
+dump        1 all custom 10000 Indentation.lammpstrj id type x y z 
+fix            5 tool move linear 0.0 0.0 -${loadv} units box 
+fix            6 all print 100 "${disp} ${load1} ${load2}" file load_disp.txt
+run            ${load_step}
+ 
+#-----------------------------------保持阶段-------------------
+fix            7 tool move linear 0 0 0 units box
+run            ${hold_step}
+ 
+#-----------------------------------卸载过程--------------------
+fix            7 tool move linear 0.0 0.0 ${loadv} units box 
+run            ${load_step}
+
+#mpiexec -n 16 lmp -i in.nano

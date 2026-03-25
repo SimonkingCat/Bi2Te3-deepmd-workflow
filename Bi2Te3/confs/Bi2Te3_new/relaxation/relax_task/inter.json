@@ -1,0 +1,9 @@
+{
+    "type": "deepmd",
+    "model": "frozen_model.pb",
+    "in_lammps": "lammps_input/in.lammps",
+    "type_map": {
+        "Bi": 0,
+        "Te": 1
+    }
+}

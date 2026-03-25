@@ -1,0 +1,38 @@
+.DS_Store
+
+# Common archive outputs
+*.zip
+*.tar
+*.tar.gz
+
+# Large raw trajectory and dump files
+*.lammpstrj
+*.xyz
+*.atom
+*.restart
+dump.relax
+
+# Runtime logs and scheduler artifacts
+log.lammps
+log.melt
+errlog
+outlog
+*.err
+*.out
+*.sub
+*.sub.run
+*_job_id
+*_job_tag_finished
+*_flag_if_job_task_fail
+*_task_tag_finished
+
+# DeepMD/LAMMPS runtime helpers
+deepmd
+*.tmp
+
+# Keep concise, reproducible content:
+# - json metadata
+# - scripts
+# - structure/data files
+# - model files
+# - csv summary outputs

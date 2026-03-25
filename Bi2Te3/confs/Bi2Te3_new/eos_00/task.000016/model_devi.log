@@ -1,0 +1,84 @@
+DeePMD-kit WARNING: Environmental variable TF_INTRA_OP_PARALLELISM_THREADS is not set. Tune TF_INTRA_OP_PARALLELISM_THREADS for the best performance. See https://deepmd.rtfd.io/parallelism/ for more information.
+DeePMD-kit WARNING: Environmental variable TF_INTER_OP_PARALLELISM_THREADS is not set. Tune TF_INTER_OP_PARALLELISM_THREADS for the best performance. See https://deepmd.rtfd.io/parallelism/ for more information.
+DeePMD-kit WARNING: Environmental variable OMP_NUM_THREADS is not set. Tune OMP_NUM_THREADS for the best performance. See https://deepmd.rtfd.io/parallelism/ for more information.
+DeePMD-kit WARNING: Environmental variable TF_INTRA_OP_PARALLELISM_THREADS is not set. Tune TF_INTRA_OP_PARALLELISM_THREADS for the best performance. See https://deepmd.rtfd.io/parallelism/ for more information.
+DeePMD-kit WARNING: Environmental variable TF_INTER_OP_PARALLELISM_THREADS is not set. Tune TF_INTER_OP_PARALLELISM_THREADS for the best performance. See https://deepmd.rtfd.io/parallelism/ for more information.
+DeePMD-kit WARNING: Environmental variable OMP_NUM_THREADS is not set. Tune OMP_NUM_THREADS for the best performance. See https://deepmd.rtfd.io/parallelism/ for more information.
+DeePMD-kit: Successfully load libcudart.so.11.0
+2024-12-05 16:57:20.873730: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNNINVALID_ARGUMENT: Tensor spin_attr/ntypes_spin:0, specified in either feed_devices or fetch_devices was not found in the Graph
+  >>> Info of model(s):
+  using   1 model(s): frozen_model.pb 
+  rcut in model:      8
+  ntypes in model:    2
+
+CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE
+
+Your simulation uses code contributions which should be cited:
+- USER-DEEPMD package:
+The log file lists these citations in BibTeX format.
+
+CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE
+
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = no
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 10
+  ghost atom cutoff = 10
+  binsize = 5, bins = 2 1 7
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair deepmd, perpetual
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+Setting up cg style minimization ...
+  Unit style    : metal
+  Current step  : 0
+Per MPI rank memory allocation (min/avg/max) = 3.733 | 3.733 | 3.733 Mbytes
+   Step         PotEng          Pxx            Pyy            Pzz            Pxy            Pxz            Pyz             Lx             Ly             Lz           Volume         c_mype    
+         0  -61.333699     -29025.802     -29025.802     -32490.387      0.032222762   -0.02668732     0.00012042181  4.4590243      3.8616284      30.792527      530.21945     -61.333699    
+        23  -61.400816     -23264.502     -23264.502     -22871.664      0.022834286   -0.0095883513   8.2294591e-06  4.4590243      3.8616284      30.792527      530.21945     -61.400816    
+Loop time of 0.0993664 on 1 procs for 23 steps with 15 atoms
+
+112.4% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = linesearch alpha is zero
+  Energy initial, next-to-last, final = 
+     -61.3336992465971  -61.4008159078108  -61.4008159078108
+  Force two-norm initial, final = 0.87551354 5.5732092e-08
+  Force max component initial, final = 0.32941985 2.5548389e-08
+  Final line search alpha, max atom move = 0.5 1.2774194e-08
+  Iterations, force evaluations = 23 45
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0.097097   | 0.097097   | 0.097097   |   0.0 | 97.72
+Neigh   | 0.0016174  | 0.0016174  | 0.0016174  |   0.0 |  1.63
+Comm    | 0.00047272 | 0.00047272 | 0.00047272 |   0.0 |  0.48
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.0001792  |            |       |  0.18
+
+Nlocal:             15 ave          15 max          15 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:            849 ave         849 max         849 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:              0 ave           0 max           0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:         1668 ave        1668 max        1668 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 1668
+Ave neighs/atom = 111.2
+Neighbor list builds = 46
+Dangerous builds not checked
+All done
+Total number of atoms = 15
+Final energy per atoms = -4.09338772718739
+Final volume per atoms = 35.3479632734237
+Final Base area = 17.2190948498588
+Final Stress (xx yy zz xy xz yz) = -23264.5017475999 -23264.5017107798 -22871.6640738799 0.0228342861566501 -0.00958835126329248 8.22945905728658e-06
+Total wall time: 0:00:02

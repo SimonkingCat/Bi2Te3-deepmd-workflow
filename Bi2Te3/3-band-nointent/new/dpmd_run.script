@@ -1,0 +1,17 @@
+#!/bin/bash
+#SBATCH --job-name=deepmd
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=4
+#SBATCH --gres=gpu:A30:1
+#SBATCH --mem=200g
+#SBATCH --time=120:00:00
+#SBATCH --output=deepmd
+
+#source /home/nam/miniconda3/etc/profile.d/conda.sh
+
+#export PATH="/home/nam/miniconda3/bin:$PATH"
+
+#conda init bash
+conda activate deepmd
+mpirun -np 1 --map-by ppr:16:numa lmp -i in.nano > log.melt
+

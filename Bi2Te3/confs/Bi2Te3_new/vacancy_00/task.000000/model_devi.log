@@ -1,0 +1,180 @@
+DeePMD-kit WARNING: Environmental variable TF_INTRA_OP_PARALLELISM_THREADS is not set. Tune TF_INTRA_OP_PARALLELISM_THREADS for the best performance. See https://deepmd.rtfd.io/parallelism/ for more information.
+DeePMD-kit WARNING: Environmental variable TF_INTER_OP_PARALLELISM_THREADS is not set. Tune TF_INTER_OP_PARALLELISM_THREADS for the best performance. See https://deepmd.rtfd.io/parallelism/ for more information.
+DeePMD-kit WARNING: Environmental variable OMP_NUM_THREADS is not set. Tune OMP_NUM_THREADS for the best performance. See https://deepmd.rtfd.io/parallelism/ for more information.
+DeePMD-kit WARNING: Environmental variable TF_INTRA_OP_PARALLELISM_THREADS is not set. Tune TF_INTRA_OP_PARALLELISM_THREADS for the best performance. See https://deepmd.rtfd.io/parallelism/ for more information.
+DeePMD-kit WARNING: Environmental variable TF_INTER_OP_PARALLELISM_THREADS is not set. Tune TF_INTER_OP_PARALLELISM_THREADS for the best performance. See https://deepmd.rtfd.io/parallelism/ for more information.
+DeePMD-kit WARNING: Environmental variable OMP_NUM_THREADS is not set. Tune OMP_NUM_THREADS for the best performance. See https://deepmd.rtfd.io/parallelism/ for more information.
+DeePMD-kit: Successfully load libcudart.so.11.0
+2024-12-05 16:56:34.716491: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN)INVALID_ARGUMENT: Tensor spin_attr/ntypes_spin:0, specified in either feed_devices or fetch_devices was not found in the Graph
+  >>> Info of model(s):
+  using   1 model(s): frozen_model.pb 
+  rcut in model:      8
+  ntypes in model:    2
+
+CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE
+
+Your simulation uses code contributions which should be cited:
+- USER-DEEPMD package:
+The log file lists these citations in BibTeX format.
+
+CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE
+
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = no
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 10
+  ghost atom cutoff = 10
+  binsize = 5, bins = 4 3 19
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair deepmd, perpetual
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+Setting up cg style minimization ...
+  Unit style    : metal
+  Current step  : 0
+WARNING: Energy due to 1 extra global DOFs will be included in minimizer energies
+ (src/min.cpp:225)
+Per MPI rank memory allocation (min/avg/max) = 3.831 | 3.831 | 3.831 Mbytes
+   Step         PotEng          Pxx            Pyy            Pzz            Pxy            Pxz            Pyz             Lx             Ly             Lz           Volume         c_mype    
+         0  -1659.9349     -501.84709     -501.84843     -481.57915      0.038553681   -0.036659397   -0.00088805562  13.119758      11.362043      90.600648      13505.59      -1659.9349    
+        52  -1660.1649     -72.299317     -72.309196      149.93112     -0.34990715     0.60259121    -0.01105818     13.11359       11.356702      90.558058      13486.552     -1660.1649    
+Loop time of 1.67813 on 1 procs for 52 steps with 404 atoms
+
+101.5% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = linesearch alpha is zero
+  Energy initial, next-to-last, final = 
+     -1659.93490541604   -1660.1649266058  -1660.16492097603
+  Force two-norm initial, final = 12.608689 0.11426593
+  Force max component initial, final = 12.520163 0.044824859
+  Final line search alpha, max atom move = 9.0049659e-07 4.0364632e-08
+  Iterations, force evaluations = 52 118
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 1.4943     | 1.4943     | 1.4943     |   0.0 | 89.05
+Neigh   | 0.16948    | 0.16948    | 0.16948    |   0.0 | 10.10
+Comm    | 0.0063072  | 0.0063072  | 0.0063072  |   0.0 |  0.38
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.008002   |            |       |  0.48
+
+Nlocal:            404 ave         404 max         404 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           3040 ave        3040 max        3040 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:              0 ave           0 max           0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:        49682 ave       49682 max       49682 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 49682
+Ave neighs/atom = 122.97525
+Neighbor list builds = 119
+Dangerous builds not checked
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Setting up cg style minimization ...
+  Unit style    : metal
+  Current step  : 52
+WARNING: Energy due to 3 extra global DOFs will be included in minimizer energies
+ (src/min.cpp:225)
+Per MPI rank memory allocation (min/avg/max) = 5.106 | 5.106 | 5.106 Mbytes
+   Step         PotEng          Pxx            Pyy            Pzz            Pxy            Pxz            Pyz             Lx             Ly             Lz           Volume         c_mype    
+        52  -1660.1649     -72.299317     -72.309196      149.93112     -0.34990715     0.60259121    -0.01105818     13.11359       11.356702      90.558058      13486.552     -1660.1649    
+       100  -1660.1674     -0.45173105    -9.7164492     -3.9314501      4.1629823     -5.0752859     -4.4632094      13.109542      11.353395      90.600759      13484.819     -1660.1674    
+       176  -1660.1689      11.435301     -3.0317993      24.922379      4.8828489     -5.1102045     -6.9450317      13.10967       11.35362       90.600255      13485.142     -1660.1689    
+Loop time of 3.48893 on 1 procs for 124 steps with 404 atoms
+
+101.5% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = linesearch alpha is zero
+  Energy initial, next-to-last, final = 
+     -1660.16492097603  -1660.16894663079  -1660.16894059551
+  Force two-norm initial, final = 1.5312494 0.23268316
+  Force max component initial, final = 1.2620669 0.20966809
+  Final line search alpha, max atom move = 1.2123902e-07 2.5419953e-08
+  Iterations, force evaluations = 124 250
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 3.0985     | 3.0985     | 3.0985     |   0.0 | 88.81
+Neigh   | 0.36058    | 0.36058    | 0.36058    |   0.0 | 10.33
+Comm    | 0.012909   | 0.012909   | 0.012909   |   0.0 |  0.37
+Output  | 0.00059528 | 0.00059528 | 0.00059528 |   0.0 |  0.02
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.01634    |            |       |  0.47
+
+Nlocal:            404 ave         404 max         404 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           3050 ave        3050 max        3050 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:              0 ave           0 max           0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:        49682 ave       49682 max       49682 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 49682
+Ave neighs/atom = 122.97525
+Neighbor list builds = 251
+Dangerous builds not checked
+Generated 0 of 1 mixed pair_coeff terms from geometric mixing rule
+Setting up cg style minimization ...
+  Unit style    : metal
+  Current step  : 176
+WARNING: Energy due to 6 extra global DOFs will be included in minimizer energies
+ (src/min.cpp:225)
+Per MPI rank memory allocation (min/avg/max) = 5.106 | 5.106 | 5.106 Mbytes
+   Step         PotEng          Pxx            Pyy            Pzz            Pxy            Pxz            Pyz             Lx             Ly             Lz           Volume         c_mype    
+       176  -1660.1689      11.435301     -3.0317993      24.922379      4.8828489     -5.1102045     -6.9450317      13.10967       11.35362       90.600255      13485.142     -1660.1689    
+       200  -1660.169      -4.3349111      4.1378135      1.9103787     -1.105848       1.1440836      4.0800542      13.109755      11.353198      90.604178      13485.312     -1660.169     
+       220  -1660.169       0.075832933   -2.8074747     -0.75449705     2.8267888     -3.0964369     -1.3957206      13.109607      11.353314      90.604458      13485.339     -1660.169     
+Loop time of 1.475 on 1 procs for 44 steps with 404 atoms
+
+102.2% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = linesearch alpha is zero
+  Energy initial, next-to-last, final = 
+     -1660.16894059551  -1660.16896374435  -1660.16896272401
+  Force two-norm initial, final = 0.23774113 0.038593553
+  Force max component initial, final = 0.20976579 0.0274735
+  Final line search alpha, max atom move = 7.362059e-06 2.0226153e-07
+  Iterations, force evaluations = 44 105
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 1.3087     | 1.3087     | 1.3087     |   0.0 | 88.72
+Neigh   | 0.15299    | 0.15299    | 0.15299    |   0.0 | 10.37
+Comm    | 0.0055217  | 0.0055217  | 0.0055217  |   0.0 |  0.37
+Output  | 0.00066318 | 0.00066318 | 0.00066318 |   0.0 |  0.04
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.007153   |            |       |  0.48
+
+Nlocal:            404 ave         404 max         404 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:           3050 ave        3050 max        3050 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:              0 ave           0 max           0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+FullNghs:        49682 ave       49682 max       49682 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 49682
+Ave neighs/atom = 122.97525
+Neighbor list builds = 106
+Dangerous builds not checked
+All done
+Total number of atoms = 404
+Final energy per atoms = -4.10932911565349
+Final volume per atoms = 33.3795528695416
+Final Base area = 148.837482463251
+Final Stress (xx yy zz xy xz yz) = 0.0758329325181648 -2.80747472725211 -0.754497049405156 2.82678883338524 -3.09643694226736 -1.39572056180812
+Total wall time: 0:00:08

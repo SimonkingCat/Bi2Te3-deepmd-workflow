@@ -1,0 +1,415 @@
+{
+    "work_base": "/scratch2/junbo/Bi2Te3/confs/Bi2Te3_new/eos_00",
+    "_abs_work_base": "/scratch2/junbo/Bi2Te3/confs/Bi2Te3_new/eos_00",
+    "machine": {
+        "batch_type": "Slurm",
+        "context_type": "LazyLocalContext",
+        "local_root": "/scratch2/junbo/Bi2Te3",
+        "remote_root": null,
+        "remote_profile": {},
+        "clean_asynchronously": false
+    },
+    "resources": {
+        "number_node": 1,
+        "cpu_per_node": 1,
+        "gpu_per_node": 1,
+        "queue_name": "",
+        "group_size": 100,
+        "custom_flags": [
+            "#SBATCH --time=0-120:00",
+            "#SBATCH --error=%j.err",
+            "#SBATCH --output=%j.out",
+            "#SBATCH --job-name=lammps",
+            "#SBATCH --cpus-per-task=16",
+            "#SBATCH --gres=gpu:A30:1",
+            "#SBATCH --get-user-env",
+            "ulimit -s unlimited",
+            "ulimit -l unlimited"
+        ],
+        "strategy": {
+            "if_cuda_multi_devices": false,
+            "ratio_unfinished": 0.0
+        },
+        "para_deg": 1,
+        "module_purge": false,
+        "module_unload_list": [],
+        "module_list": [],
+        "source_list": [],
+        "envs": {},
+        "prepend_script": [],
+        "append_script": [],
+        "wait_time": 0,
+        "kwargs": {
+            "custom_gpu_line": null
+        }
+    },
+    "forward_common_files": [
+        "frozen_model.pb"
+    ],
+    "backward_common_files": [],
+    "belonging_jobs": [
+        {
+            "9eb52d4901bbed9655632001a6b607a7dee855c2": {
+                "job_task_list": [
+                    {
+                        "command": "lmp -i in.lammps 1> model_devi.log 2> model_devi.log",
+                        "task_work_path": "task.000019",
+                        "forward_files": [
+                            "conf.lmp",
+                            "in.lammps",
+                            "frozen_model.pb"
+                        ],
+                        "backward_files": [
+                            "log.lammps",
+                            "outlog",
+                            "dump.relax"
+                        ],
+                        "outlog": "outlog",
+                        "errlog": "errlog"
+                    },
+                    {
+                        "command": "lmp -i in.lammps 1> model_devi.log 2> model_devi.log",
+                        "task_work_path": "task.000005",
+                        "forward_files": [
+                            "conf.lmp",
+                            "in.lammps",
+                            "frozen_model.pb"
+                        ],
+                        "backward_files": [
+                            "log.lammps",
+                            "outlog",
+                            "dump.relax"
+                        ],
+                        "outlog": "outlog",
+                        "errlog": "errlog"
+                    },
+                    {
+                        "command": "lmp -i in.lammps 1> model_devi.log 2> model_devi.log",
+                        "task_work_path": "task.000014",
+                        "forward_files": [
+                            "conf.lmp",
+                            "in.lammps",
+                            "frozen_model.pb"
+                        ],
+                        "backward_files": [
+                            "log.lammps",
+                            "outlog",
+                            "dump.relax"
+                        ],
+                        "outlog": "outlog",
+                        "errlog": "errlog"
+                    },
+                    {
+                        "command": "lmp -i in.lammps 1> model_devi.log 2> model_devi.log",
+                        "task_work_path": "task.000004",
+                        "forward_files": [
+                            "conf.lmp",
+                            "in.lammps",
+                            "frozen_model.pb"
+                        ],
+                        "backward_files": [
+                            "log.lammps",
+                            "outlog",
+                            "dump.relax"
+                        ],
+                        "outlog": "outlog",
+                        "errlog": "errlog"
+                    },
+                    {
+                        "command": "lmp -i in.lammps 1> model_devi.log 2> model_devi.log",
+                        "task_work_path": "task.000009",
+                        "forward_files": [
+                            "conf.lmp",
+                            "in.lammps",
+                            "frozen_model.pb"
+                        ],
+                        "backward_files": [
+                            "log.lammps",
+                            "outlog",
+                            "dump.relax"
+                        ],
+                        "outlog": "outlog",
+                        "errlog": "errlog"
+                    },
+                    {
+                        "command": "lmp -i in.lammps 1> model_devi.log 2> model_devi.log",
+                        "task_work_path": "task.000013",
+                        "forward_files": [
+                            "conf.lmp",
+                            "in.lammps",
+                            "frozen_model.pb"
+                        ],
+                        "backward_files": [
+                            "log.lammps",
+                            "outlog",
+                            "dump.relax"
+                        ],
+                        "outlog": "outlog",
+                        "errlog": "errlog"
+                    },
+                    {
+                        "command": "lmp -i in.lammps 1> model_devi.log 2> model_devi.log",
+                        "task_work_path": "task.000015",
+                        "forward_files": [
+                            "conf.lmp",
+                            "in.lammps",
+                            "frozen_model.pb"
+                        ],
+                        "backward_files": [
+                            "log.lammps",
+                            "outlog",
+                            "dump.relax"
+                        ],
+                        "outlog": "outlog",
+                        "errlog": "errlog"
+                    },
+                    {
+                        "command": "lmp -i in.lammps 1> model_devi.log 2> model_devi.log",
+                        "task_work_path": "task.000018",
+                        "forward_files": [
+                            "conf.lmp",
+                            "in.lammps",
+                            "frozen_model.pb"
+                        ],
+                        "backward_files": [
+                            "log.lammps",
+                            "outlog",
+                            "dump.relax"
+                        ],
+                        "outlog": "outlog",
+                        "errlog": "errlog"
+                    },
+                    {
+                        "command": "lmp -i in.lammps 1> model_devi.log 2> model_devi.log",
+                        "task_work_path": "task.000006",
+                        "forward_files": [
+                            "conf.lmp",
+                            "in.lammps",
+                            "frozen_model.pb"
+                        ],
+                        "backward_files": [
+                            "log.lammps",
+                            "outlog",
+                            "dump.relax"
+                        ],
+                        "outlog": "outlog",
+                        "errlog": "errlog"
+                    },
+                    {
+                        "command": "lmp -i in.lammps 1> model_devi.log 2> model_devi.log",
+                        "task_work_path": "task.000012",
+                        "forward_files": [
+                            "conf.lmp",
+                            "in.lammps",
+                            "frozen_model.pb"
+                        ],
+                        "backward_files": [
+                            "log.lammps",
+                            "outlog",
+                            "dump.relax"
+                        ],
+                        "outlog": "outlog",
+                        "errlog": "errlog"
+                    },
+                    {
+                        "command": "lmp -i in.lammps 1> model_devi.log 2> model_devi.log",
+                        "task_work_path": "task.000017",
+                        "forward_files": [
+                            "conf.lmp",
+                            "in.lammps",
+                            "frozen_model.pb"
+                        ],
+                        "backward_files": [
+                            "log.lammps",
+                            "outlog",
+                            "dump.relax"
+                        ],
+                        "outlog": "outlog",
+                        "errlog": "errlog"
+                    },
+                    {
+                        "command": "lmp -i in.lammps 1> model_devi.log 2> model_devi.log",
+                        "task_work_path": "task.000010",
+                        "forward_files": [
+                            "conf.lmp",
+                            "in.lammps",
+                            "frozen_model.pb"
+                        ],
+                        "backward_files": [
+                            "log.lammps",
+                            "outlog",
+                            "dump.relax"
+                        ],
+                        "outlog": "outlog",
+                        "errlog": "errlog"
+                    },
+                    {
+                        "command": "lmp -i in.lammps 1> model_devi.log 2> model_devi.log",
+                        "task_work_path": "task.000001",
+                        "forward_files": [
+                            "conf.lmp",
+                            "in.lammps",
+                            "frozen_model.pb"
+                        ],
+                        "backward_files": [
+                            "log.lammps",
+                            "outlog",
+                            "dump.relax"
+                        ],
+                        "outlog": "outlog",
+                        "errlog": "errlog"
+                    },
+                    {
+                        "command": "lmp -i in.lammps 1> model_devi.log 2> model_devi.log",
+                        "task_work_path": "task.000011",
+                        "forward_files": [
+                            "conf.lmp",
+                            "in.lammps",
+                            "frozen_model.pb"
+                        ],
+                        "backward_files": [
+                            "log.lammps",
+                            "outlog",
+                            "dump.relax"
+                        ],
+                        "outlog": "outlog",
+                        "errlog": "errlog"
+                    },
+                    {
+                        "command": "lmp -i in.lammps 1> model_devi.log 2> model_devi.log",
+                        "task_work_path": "task.000002",
+                        "forward_files": [
+                            "conf.lmp",
+                            "in.lammps",
+                            "frozen_model.pb"
+                        ],
+                        "backward_files": [
+                            "log.lammps",
+                            "outlog",
+                            "dump.relax"
+                        ],
+                        "outlog": "outlog",
+                        "errlog": "errlog"
+                    },
+                    {
+                        "command": "lmp -i in.lammps 1> model_devi.log 2> model_devi.log",
+                        "task_work_path": "task.000016",
+                        "forward_files": [
+                            "conf.lmp",
+                            "in.lammps",
+                            "frozen_model.pb"
+                        ],
+                        "backward_files": [
+                            "log.lammps",
+                            "outlog",
+                            "dump.relax"
+                        ],
+                        "outlog": "outlog",
+                        "errlog": "errlog"
+                    },
+                    {
+                        "command": "lmp -i in.lammps 1> model_devi.log 2> model_devi.log",
+                        "task_work_path": "task.000007",
+                        "forward_files": [
+                            "conf.lmp",
+                            "in.lammps",
+                            "frozen_model.pb"
+                        ],
+                        "backward_files": [
+                            "log.lammps",
+                            "outlog",
+                            "dump.relax"
+                        ],
+                        "outlog": "outlog",
+                        "errlog": "errlog"
+                    },
+                    {
+                        "command": "lmp -i in.lammps 1> model_devi.log 2> model_devi.log",
+                        "task_work_path": "task.000008",
+                        "forward_files": [
+                            "conf.lmp",
+                            "in.lammps",
+                            "frozen_model.pb"
+                        ],
+                        "backward_files": [
+                            "log.lammps",
+                            "outlog",
+                            "dump.relax"
+                        ],
+                        "outlog": "outlog",
+                        "errlog": "errlog"
+                    },
+                    {
+                        "command": "lmp -i in.lammps 1> model_devi.log 2> model_devi.log",
+                        "task_work_path": "task.000000",
+                        "forward_files": [
+                            "conf.lmp",
+                            "in.lammps",
+                            "frozen_model.pb"
+                        ],
+                        "backward_files": [
+                            "log.lammps",
+                            "outlog",
+                            "dump.relax"
+                        ],
+                        "outlog": "outlog",
+                        "errlog": "errlog"
+                    },
+                    {
+                        "command": "lmp -i in.lammps 1> model_devi.log 2> model_devi.log",
+                        "task_work_path": "task.000003",
+                        "forward_files": [
+                            "conf.lmp",
+                            "in.lammps",
+                            "frozen_model.pb"
+                        ],
+                        "backward_files": [
+                            "log.lammps",
+                            "outlog",
+                            "dump.relax"
+                        ],
+                        "outlog": "outlog",
+                        "errlog": "errlog"
+                    }
+                ],
+                "resources": {
+                    "number_node": 1,
+                    "cpu_per_node": 1,
+                    "gpu_per_node": 1,
+                    "queue_name": "",
+                    "group_size": 100,
+                    "custom_flags": [
+                        "#SBATCH --time=0-120:00",
+                        "#SBATCH --error=%j.err",
+                        "#SBATCH --output=%j.out",
+                        "#SBATCH --job-name=lammps",
+                        "#SBATCH --cpus-per-task=16",
+                        "#SBATCH --gres=gpu:A30:1",
+                        "#SBATCH --get-user-env",
+                        "ulimit -s unlimited",
+                        "ulimit -l unlimited"
+                    ],
+                    "strategy": {
+                        "if_cuda_multi_devices": false,
+                        "ratio_unfinished": 0.0
+                    },
+                    "para_deg": 1,
+                    "module_purge": false,
+                    "module_unload_list": [],
+                    "module_list": [],
+                    "source_list": [],
+                    "envs": {},
+                    "prepend_script": [],
+                    "append_script": [],
+                    "wait_time": 0,
+                    "kwargs": {
+                        "custom_gpu_line": null
+                    }
+                },
+                "job_state": 5,
+                "job_id": "8449",
+                "fail_count": 0
+            }
+        }
+    ]
+}

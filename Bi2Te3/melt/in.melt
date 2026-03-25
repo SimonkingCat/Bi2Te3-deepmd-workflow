@@ -1,0 +1,66 @@
+# LAMMPS input script for Bi2Te3 with structural optimization and heating from 300K to 1000K
+
+units           metal
+dimension	3
+boundary	p p p
+atom_style      atomic
+
+neighbor        2.0 bin
+neigh_modify delay 0
+
+timestep        0.002
+
+read_data       Bi2Te3552.Data
+
+
+pair_style deepmd frozen_model.pb
+pair_coeff * *
+
+
+# 定义变量
+variable        t equal temp
+variable        e equal pe
+variable        v equal vol
+variable        p equal press
+variable        s equal step
+
+
+
+
+# 能量最小化
+#fix 1 all box/relax iso 100
+min_style cg
+minimize 1.0e-8 1.0e-8 10000 10000
+#unfix 1
+
+
+# 输出设置
+thermo_style    custom step temp pe press vol density lx
+thermo          30
+dump            2 all custom 100 dump.xyz id type x y z
+
+
+# Short NVE run for dynamic relaxation
+fix             1 all nve
+run             1000
+unfix           1
+
+# 平衡
+velocity        all create 300.0 42341233 dist gaussian mom yes rot yes
+
+fix 2 all npt temp 300 300 0.01  iso 0 0 0.1
+run 5000
+unfix 2
+#unfix 1
+
+# 添加一个输出文件，记录温度和能量/体积
+fix 3 all print 100 " ${s}, ${t}, ${e}, ${p}, ${v}" file temp_energy_vol.csv screen no
+
+# 熔化
+
+fix 2 all npt temp 300 1000 0.01  iso 0 0 0.1
+run 150000
+unfix 2
+
+# 关闭输出文件
+unfix 3

@@ -1,0 +1,67 @@
+# Define temperatures for the loop using 'index'
+variable t index 100 200 300 400 500 600 700 
+
+label temp_loop
+
+
+units           metal
+dimension       3
+boundary        p p p
+atom_style      atomic
+
+neighbor        2.5 bin
+neigh_modify delay 0
+
+timestep        0.002
+
+
+
+read_data       Bi2Te3552.Data
+
+pair_style      deepmd frozen_model.pb
+pair_coeff      * *
+
+
+# Minimization
+min_style       cg
+minimize        1e-10 1e-10 5000 5000
+
+
+# Set temperature
+variable T equal ${t}
+
+# Velocity Initialization
+
+# Boundary Fixes
+
+fix 2 all npt temp ${T} ${T} 0.01 iso 0 0 0.1
+
+# Output Configuration
+thermo 1000
+thermo_modify lost ignore
+dump 1 all atom 1000 relax_${T}K.lammpstrj
+run 3000
+
+unfix 2
+undump 1
+reset_timestep 0
+
+# Stress-Strain Output
+thermo_style custom step temp lx ly lz vol
+thermo 100
+
+fix 2 all npt temp ${T} ${T} 0.01 x 0 0 0.1 y 0 0 0.1
+fix 3 all deform 200 z erate 0.005 remap x
+dump 1 all atom 500 algp_${T}K.lammpstrj
+run 20000
+undump 1
+
+# Clean up compute and prepare for the next loop
+
+unfix 2
+unfix 3
+
+# Loop to the next temperature
+clear
+next t
+jump SELF temp_loop

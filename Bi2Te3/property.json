@@ -1,0 +1,37 @@
+{
+    "structures":       ["confs/Bi2Te3_new"],
+    "interaction": {
+        "type":          "deepmd",
+        "model":         "frozen_model.pb",
+        "deepmd_version":"2.1.0",
+        "type_map":     {"Bi":0,"Te": 1}
+    },
+    "properties": [
+        {
+         "type":         "eos",
+         "vol_start":    0.9,
+         "vol_end":      1.1,
+         "vol_step":     0.01
+        },
+        {
+         "type":         "elastic",
+         "norm_deform":  1e-2,
+         "shear_deform": 1e-2
+        },
+        {
+         "type":             "vacancy",
+         "supercell":        [3, 3, 3],
+         "start_confs_path": "confs"
+        },
+        {
+         "type": "gamma",
+         "lattice_type": "fcc",
+         "miller_index": [1, 1, 1],
+         "displace_direction": [1, 1, 0],
+         "supercell_size": [1, 1, 10],
+         "min_vacuum_size": 10,
+         "add_fix": ["true", "true", "false"],
+         "n_steps": 20
+        }
+        ]
+}

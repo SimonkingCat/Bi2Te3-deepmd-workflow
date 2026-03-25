@@ -1,0 +1,77 @@
+# Define temperatures for the loop using 'index'
+variable t index 100 200 300 400 500 600 700 
+
+label temp_loop
+
+units           metal
+dimension       3
+boundary        p p p
+atom_style      atomic
+
+neighbor        0.3 bin
+neigh_modify delay 0
+
+timestep        0.001
+
+read_data       swapped_0.05_POSCAR.data
+
+pair_style      deepmd frozen_model.pb
+pair_coeff      * *
+
+# Minimization
+min_style       cg
+minimize        1e-10 1e-10 5000 5000
+
+# Set temperature
+variable T equal ${t}
+
+# Velocity Initialization
+velocity all create ${T} 53434 dist gaussian 
+
+# Stress and Strain Calculations
+compute 1 all centroid/stress/atom NULL
+compute xx_stress all reduce sum c_1[1]  # 修改为x方向的应力
+
+variable CorVol equal ly*lz*3.35
+variable sigmaxx equal c_xx_stress/(v_CorVol*10000)
+
+variable l_x equal lx
+variable lx0 equal ${l_x}  # 初始化为初始盒子x轴长度
+variable strain equal (lx-v_lx0)/v_lx0
+variable stress equal v_sigmaxx
+
+# Boundary Fixes
+fix 2 all npt temp ${T} ${T} 0.01 iso 0 0 0.1
+
+# Output Configuration
+thermo 1000
+thermo_modify lost ignore
+dump 1 all atom 1000 relax_${T}K.lammpstrj
+run 3000
+
+unfix 2
+undump 1
+reset_timestep 0
+
+# Stress-Strain Output
+fix output all print 100 "${strain},${stress}" file stress_strain_${T}K.csv screen no title "Strain,Stress"
+thermo_style custom step press v_strain v_sigmaxx temp lx ly lz vol
+thermo 100
+
+fix 2 all npt temp ${T} ${T} 0.01 y 0 0 0.1 z 0 0 0.1
+fix 3 all deform 200 x erate 0.005 remap x   # 修改拉伸方向为x轴
+dump 1 all atom 500 algp_${T}K.lammpstrj
+run 50000
+undump 1
+
+# Clean up compute and prepare for the next loop
+uncompute 1
+uncompute xx_stress
+
+unfix 2
+unfix 3
+
+# Loop to the next temperature
+clear
+next t
+jump SELF temp_loop

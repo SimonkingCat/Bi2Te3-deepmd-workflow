@@ -1,0 +1,67 @@
+units           metal
+dimension       3
+boundary        p p p
+atom_style      atomic
+
+neighbor        2.5 bin
+neigh_modify delay 0
+
+timestep        0.002
+
+read_data       Bi2Te3552.Data
+
+pair_style      deepmd frozen_model.pb
+pair_coeff      * *
+
+# Region and Group Definitions
+region left block INF INF INF INF INF 3 units box
+group left region left
+region right block INF INF INF INF 57 INF units box
+group right region right
+group boundary union left right
+group mobile subtract all boundary
+
+# Minimization
+min_style       cg
+minimize        1e-10 1e-10 5000 5000
+
+# Velocity Initialization
+velocity mobile create 300 53434 dist gaussian units box
+velocity left set 0.0 0.0 0.0 units box
+velocity right set 0.0 0.0 0.0 units box
+
+# Stress and Strain Calculations
+compute 1 all centroid/stress/atom NULL
+compute zz_stress all reduce sum c_1[3]
+
+variable CorVol equal ly*lx*3.35
+variable sigmazz equal c_zz_stress/(v_CorVol*10000)
+
+variable l_z equal lz
+variable lz0 equal ${l_z}  # 初始化为初始盒子z轴长度
+variable strain equal (lz-v_lz0)/v_lz0
+variable stress equal v_sigmazz
+
+# Boundary Fixes
+fix 1 boundary setforce 0 0 0
+fix 2 all npt temp 300 300 0.01 iso 0 0 0.1
+
+# Output Configuration
+thermo 1000
+thermo_modify lost ignore
+dump 1 all atom 1000 relax.lammpstrj
+run 10000
+
+unfix 2
+undump 1
+reset_timestep 0
+
+# Stress-Strain Output
+fix output all print 100 "${strain},${stress}" file stress_strain.csv screen no title "Strain,Stress"
+thermo_style custom step press v_strain v_sigmazz temp lx ly lz vol
+thermo 100
+
+fix 2 all nvt temp 300 300 0.01
+fix 3 all deform 200 z erate 0.005 remap x
+dump 1 all atom 500 algp.lammpstrj
+run 100000

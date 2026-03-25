@@ -1,0 +1,36 @@
+Package name: Bi2Te3_full_package_20260325.tar.gz
+Created on server: 2026-03-25
+
+Server package path:
+/scratch2/junbo/package_out/Bi2Te3_full_package_20260325.tar.gz
+
+Included source directories:
+/scratch2/junbo/Bi2Te3
+/scratch2/junbo/Machinelearning_potential/Bi2Te3
+
+Approximate source sizes:
+/scratch2/junbo/Bi2Te3                         4.0G
+/scratch2/junbo/Machinelearning_potential/Bi2Te3   26M
+
+Notable subdirectories in /scratch2/junbo/Bi2Te3:
+/scratch2/junbo/Bi2Te3/confs
+/scratch2/junbo/Bi2Te3/deform1
+/scratch2/junbo/Bi2Te3/deform2
+/scratch2/junbo/Bi2Te3/deform3
+/scratch2/junbo/Bi2Te3/deform4
+/scratch2/junbo/Bi2Te3/bend
+/scratch2/junbo/Bi2Te3/melt
+/scratch2/junbo/Bi2Te3/3-band
+/scratch2/junbo/Bi2Te3/3-band-nointent
+/scratch2/junbo/Bi2Te3/nano
+
+Completed package size on server:
+1.7G
+
+SHA256:
+1bc83eae1fedf5ecc1319e055c95f3551ef80b2ee3e45eb8314d08110af70779
+
+Notes:
+- This is a full data package, not a metadata-only package.
+- The package includes the large deform4 directory.
+- Local download to this workspace was started after packaging.

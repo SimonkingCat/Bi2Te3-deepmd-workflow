@@ -1,0 +1,102 @@
+{
+    "api_version": "1.0",
+    "deepmd_version": "2.0.1",
+    "train": {
+        "_comment": "training on hcp",
+        "machine": {
+            "batch_type": "Slurm",
+            "context_type": "local",
+            "remote_root": "/share/home/niujbo/runwork1",
+            "local_root": "./"
+        },
+        "resources": {
+            "envs": {},
+            "batch_type": "Slurm",
+            "group_size": 1,
+            "queue_name": "gpu",
+            "custom_flags":[
+                 "#SBATCH --time=0-120:00",
+                 "#SBATCH --error=%j.err",
+                 "#SBATCH --exclude=gpu05",
+                 "#SBATCH --output=%j.out",
+                 "#SBATCH --job-name=dp",
+                 "#SBATCH --get-user-env",
+                 "ulimit -s unlimited",
+                 "ulimit -l unlimited"
+                                     ],
+            "kwargs": {},
+            "_source_list":["/share/software/intel/oneapi/setvars.sh"],
+            "number_node": 1,
+            "cpu_per_node": 4,
+            "gpu_per_node": 1
+        },
+        "command": "dp"
+    },
+    "model_devi": {
+        "_comment": "model devi on hcp",
+        "machine": {
+            "_comment": "If lazy_local, calculations are done directly in current folders.",
+            "batch_type": "slurm",
+            "context_type": "lazylocal",
+            "local_root": "./"
+        },
+        "resources": {
+            "batch_type": "slurm",
+            "group_size": 100,
+            "custom_flags":[
+                 "#SBATCH --time=0-120:00",
+                 "#SBATCH --error=%j.err",
+                 "#SBATCH --output=%j.out",
+                 "#SBATCH --job-name=lammps",
+                 "#SBATCH --cpus-per-task=16",
+                 "#SBATCH --gres=gpu:A30:1",
+                 "#SBATCH --get-user-env",
+                 "ulimit -s unlimited",
+                 "ulimit -l unlimited"
+                                     ],
+            "kwargs": {},
+            "_source_list":["/share/software/intel/oneapi/setvars.sh"],
+            "queue_name": "",
+            "number_node": 1,
+            "cpu_per_node": 1,
+            "gpu_per_node": 1
+        },
+        "command": "lmp"
+    },
+    "fp": {
+        "_comment": "fp on hcp",
+        "machine": {
+            "batch_type": "Slurm",
+            "context_type": "local",
+            "remote_root": "/share/home/niujbo/runwork1",
+            "local_root": "./"
+        },
+        "resources": {
+            "module_purge": true,
+            "module_list": [
+                
+            ],
+            "_comment": "that's all",
+            "_batch_type": "Slurm",
+            "group_size": 50,
+            "cpu_per_node": 56,
+            "custom_flags":[
+                 "#SBATCH --time=0-120:00",
+                 "#SBATCH --error=%j.err",
+                 "#SBATCH --output=%j.out",
+                 "#SBATCH --job-name=vasp",
+                 "#SBATCH --get-user-env",
+                 
+                 "ulimit -l unlimited",
+                 
+                 "ulimit -v unlimited"
+                                     ],
+            "kwargs": {},
+            "source_list":["/share/software/intel/oneapi/setvars.sh"],
+            "queue_name": "cpu",
+            "number_node": 1,
+            "gpu_per_node": 0
+        },
+        "command":"mpirun /share/software/vasp6.3/vasp_std"
+    }
+}

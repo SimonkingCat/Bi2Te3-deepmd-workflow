@@ -1,0 +1,111 @@
+dimension	    3
+units		    metal 
+boundary	    p p f
+atom_style	    atomic
+########################################################################
+#---------------------------------------建模----------------------------
+variable        a equal 3.615   #晶格常数值
+variable        lx equal 50    #盒子           
+variable        ly equal 50    #三个方向 
+variable        lz equal 150    #大小
+ 
+###创建盒子
+lattice	        fcc $a orient x 1 0 0 orient y 0 1 0 orient z 0 0 1
+region		    box block 0.0 ${lx} 0 ${lx} 0.0 ${lz} units box
+create_box	    4 box
+###创建基体原子
+region		    boundary_layer_down block INF INF INF INF INF 5 units box
+region		    thermostat_layer block INF INF INF INF 5 10 units box
+region		    newtonian_layer block INF INF INF INF 10 60 units box
+region		    substracte union 3 boundary_layer_down thermostat_layer newtonian_layer	units box
+create_atoms	1 region substracte units box
+###创建压头原子（这里的纳米压痕用的是实际压头）
+lattice	        diamond 3.57 	
+region		    indent sphere 25 25 80 12 units box
+create_atoms	4 region indent units box
+###设定原子质量
+mass		    1 63.55         #Cu
+mass		    2 63.55         #Cu
+mass		    3 63.55         #Cu
+mass		    4 12.01         #C
+#----------------------------------------划分组----------------------------------
+group		    boundary_layer_down region boundary_layer_down
+group		    thermostat_layer region thermostat_layer
+group		    newtonian_layer region newtonian_layer
+group		    tool region indent
+ 
+set		        group boundary_layer_down type 1
+set		        group thermostat_layer type 2
+set		        group newtonian_layer type 3
+set		        group tool type 4
+ 
+write_data      intial.data
+
+##################################################################################
+#---------------------------------势函数------------------------------------------
+pair_style      hybrid eam morse 9.025
+ 
+pair_coeff      1*3 1*3 eam Cu_u3.eam 
+pair_coeff      3 4 morse 0.087 5.14 2.05 
+pair_coeff      1*2 4 none
+pair_coeff      4 4 none
+#要删除
+variable        tstp equal 0.001
+variable        T equal 293
+variable        thermo_step equal 1000
+variable        relax_step  equal 50
+#---------------------------------弛豫-----------------------------
+neighbor      3.0 bin
+neigh_modify  delay 5
+compute          newTemp thermostat_layer temp
+fix            1 all nve
+fix            2 boundary_layer_down setforce 0.0 0.0 0.0
+ 
+velocity      newtonian_layer set NULL NULL NULL 
+velocity      thermostat_layer create $T 5812775 temp newTemp 
+fix            3 thermostat_layer temp/rescale 10 $T $T 10 1
+fix_modify      3 temp newTemp
+ 
+timestep      ${tstp}
+thermo        ${thermo_step}
+thermo_modify  temp newTemp
+thermo_style  custom step c_newTemp press pe ke etotal
+run            ${relax_step}
+ 
+write_data      yahen.data
+#write_restart   yahen.restart
+
+#-----------------------------压痕实现-----------------------
+variable        depth equal 30    #压入深度为30埃
+variable        distance equal 10 #压头与表面的初始距离为10埃
+variable        loadv equal 0.1  #加载速度为0.1埃/ps
+variable        load_step equal (v_depth+v_distance)/v_loadv/(${tstp})
+variable        hold_step equal 20000 
+###计算压入深度
+variable      dis equal xcm(tool,z)
+variable        initial_dis equal ${dis}    
+variable        disp equal -(v_dis-(${initial_dis}))
+###计算压入载荷
+#方法一
+variable      m1 equal fcm(tool,z)           #用压头质心的受力计算载荷
+variable        unit equal 1.602*1.0e-3        #单位换算成μN
+variable        load1 equal v_m1*(${unit})
+#方法二
+compute       forcez tool property/atom fz     
+compute        m2 tool reduce sum c_forcez   #也可以用压头z方向受到的合力计算载荷
+variable        load2 equal c_m2*(${unit})
+#----------------------------------加载过程-------------------
+dump        1 all custom 10000 Indentation.lammpstrj id type x y z 
+fix            5 tool move linear 0.0 0.0 -${loadv} units box 
+fix            6 all print 100 "${disp} ${load1} ${load2}" file load_disp.txt
+run            ${load_step}
+ 
+#-----------------------------------保持阶段-------------------
+fix            7 tool move linear 0 0 0 units box
+run            ${hold_step}
+ 
+#-----------------------------------卸载过程--------------------
+fix            7 tool move linear 0.0 0.0 ${loadv} units box 
+run            ${load_step}
+
+#mpiexec -n 16 lmp -i in.nano

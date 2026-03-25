@@ -1,0 +1,29 @@
+SYSTEM = Bi2Te3
+
+ISTART = 0
+
+ICHARG = 2
+
+#Electronic Relaxation
+EDIFF = 1E-8
+NELM = 80
+NELMIN = 5
+ISMEAR = 0
+#SIGMA = 0.05
+#ALGO = Normal
+IALGO = 38
+
+#Ionic Relaxation
+EDIFFG = -0.0001
+NSW = 120
+IBRION = 2             #0-MD; 1-Quasi-New; 2-CG
+POTIM = 0.05
+ISIF = 3
+#IVDW=12
+
+ENCUT = 500
+PREC = Accurate
+#ISPIN = 1
+NPAR = 4
+#LREAL= Auto    # evaluate projection operators in real space
+#SYMPREC = 1E-3  
