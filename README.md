@@ -50,7 +50,11 @@ Nature Communications manuscript:
 > Ultra-Flexibility Merges High Power Density in Single-Crystal Bi2Te3 Film
 > Thermoelectric Generators
 
-The exact release used for citation is intended to be archived through Zenodo.
+The citable archival release is available through Zenodo:
+
+- Zenodo DOI: https://doi.org/10.5281/zenodo.21898917
+- GitHub release: https://github.com/SimonkingCat/Bi2Te3-deepmd-workflow/releases/tag/v1.0.1
+
 The repository includes `CITATION.cff` for GitHub citation metadata and
 `.zenodo.json` for Zenodo release metadata.
 
