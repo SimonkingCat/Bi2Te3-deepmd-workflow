@@ -4,6 +4,7 @@ title: "Bi2Te3 Deep Potential Workflow Package for Ultra-Flexibility Merges High
 type: software
 version: 1.0.1
 date-released: 2026-08-12
+doi: 10.5281/zenodo.21898917
 repository-code: "https://github.com/SimonkingCat/Bi2Te3-deepmd-workflow"
 abstract: "Computational workflow, model metadata, representative inputs, and atomistic simulation outputs for the Bi2Te3 DeepMD/DPGEN/LAMMPS/VASP calculations used in the associated Nature Communications manuscript."
 keywords:
