@@ -42,6 +42,18 @@ Inside `Bi2Te3/`:
 - `3-band/`
 - `3-band-nointent/`
 
+## Citation and archival release
+
+This repository contains the code/workflow materials associated with the
+Nature Communications manuscript:
+
+> Ultra-Flexibility Merges High Power Density in Single-Crystal Bi2Te3 Film
+> Thermoelectric Generators
+
+The exact release used for citation is intended to be archived through Zenodo.
+The repository includes `CITATION.cff` for GitHub citation metadata and
+`.zenodo.json` for Zenodo release metadata.
+
 ## Notes
 
 - This repository is intended as a project-organized package rather than a polished software release.
