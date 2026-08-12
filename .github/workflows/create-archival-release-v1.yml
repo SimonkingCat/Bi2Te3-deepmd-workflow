@@ -1,0 +1,55 @@
+name: Create archival release v1.0.0
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/create-archival-release-v1.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create v1.0.0 release if missing
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OWNER_REPO: ${{ github.repository }}
+          TAG_NAME: v1.0.0
+          TARGET_COMMITISH: 2008b39488a0f475683de80216dcf68e4e9bed0d
+        run: |
+          set -euo pipefail
+          api="https://api.github.com/repos/${OWNER_REPO}"
+          auth_header="Authorization: Bearer ${GITHUB_TOKEN}"
+          accept_header="Accept: application/vnd.github+json"
+
+          if curl -fsS -H "${auth_header}" -H "${accept_header}" "${api}/releases/tags/${TAG_NAME}" > /tmp/existing_release.json; then
+            echo "Release ${TAG_NAME} already exists."
+            cat /tmp/existing_release.json
+            exit 0
+          fi
+
+          python3 - <<'PY' > /tmp/release_payload.json
+          import json
+          payload = {
+              "tag_name": "v1.0.0",
+              "target_commitish": "2008b39488a0f475683de80216dcf68e4e9bed0d",
+              "name": "v1.0.0",
+              "body": "Archival release of the Bi2Te3 Deep Potential workflow package for the Nature Communications code-availability requirement. This release points to commit 2008b39488a0f475683de80216dcf68e4e9bed0d, which contains README, CITATION.cff, and .zenodo.json metadata for Zenodo archiving.",
+              "draft": False,
+              "prerelease": False,
+              "make_latest": "true"
+          }
+          print(json.dumps(payload))
+          PY
+
+          curl -fsS -X POST \
+            -H "${auth_header}" \
+            -H "${accept_header}" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            --data @/tmp/release_payload.json \
+            "${api}/releases"
