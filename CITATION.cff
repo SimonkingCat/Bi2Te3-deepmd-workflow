@@ -1,0 +1,64 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite the archived release."
+title: "Bi2Te3 Deep Potential Workflow Package for Ultra-Flexibility Merges High Power Density in Single-Crystal Bi2Te3 Film Thermoelectric Generators"
+type: software
+version: 1.0.0
+date-released: 2026-08-12
+repository-code: "https://github.com/SimonkingCat/Bi2Te3-deepmd-workflow"
+abstract: "Computational workflow, model metadata, representative inputs, and atomistic simulation outputs for the Bi2Te3 DeepMD/DPGEN/LAMMPS/VASP calculations used in the associated Nature Communications manuscript."
+keywords:
+  - Bi2Te3
+  - bismuth telluride
+  - thermoelectric materials
+  - DeepMD-kit
+  - DPGEN
+  - LAMMPS
+  - VASP
+  - machine-learning interatomic potential
+authors:
+  - family-names: Niu
+    given-names: Jitao
+    affiliation: "State Key Laboratory of Advanced Welding and Joining, Harbin Institute of Technology, Harbin 150001, China"
+  - family-names: Dong
+    given-names: Xingyan
+    affiliation: "State Key Laboratory of Advanced Welding and Joining, Harbin Institute of Technology, Harbin 150001, China"
+  - family-names: Zhu
+    given-names: Yu-Ke
+    affiliation: "State Key Laboratory of Advanced Welding and Joining, Harbin Institute of Technology, Harbin 150001, China"
+  - family-names: Niu
+    given-names: Junbo
+    affiliation: "School of Materials Science and Engineering, Nanyang Technological University, 50 Nanyang Avenue, Singapore 639798, Singapore"
+  - family-names: Luo
+    given-names: Ding
+    affiliation: "School of Energy and Electrical Engineering, Chang'an University, Xi'an 710064, China"
+  - family-names: Liao
+    given-names: Lin
+    affiliation: "Institute of Engineering Innovation, University of Tokyo, Bunkyo, Tokyo 113-8656, Japan"
+  - family-names: Gong
+    given-names: Yuxiang
+    affiliation: "State Key Laboratory of Advanced Welding and Joining, Harbin Institute of Technology, Harbin 150001, China"
+  - family-names: Guo
+    given-names: Zhentao
+    affiliation: "State Key Laboratory of Advanced Welding and Joining, Harbin Institute of Technology, Harbin 150001, China"
+  - family-names: Zhang
+    given-names: Pengyuan
+    affiliation: "State Key Laboratory of Advanced Welding and Joining, Harbin Institute of Technology, Harbin 150001, China"
+  - family-names: Liu
+    given-names: Ming
+    affiliation: "State Key Laboratory of Advanced Welding and Joining, Harbin Institute of Technology, Harbin 150001, China"
+  - family-names: Ma
+    given-names: Hongrui
+    affiliation: "State Key Laboratory of Advanced Welding and Joining, Harbin Institute of Technology, Harbin 150001, China"
+  - family-names: Feng
+    given-names: Bin
+    affiliation: "Institute of Engineering Innovation, University of Tokyo, Bunkyo, Tokyo 113-8656, Japan"
+  - family-names: Liu
+    given-names: Zihang
+    affiliation: "State Key Laboratory of Advanced Welding and Joining, Harbin Institute of Technology, Harbin 150001, China"
+  - family-names: Li
+    given-names: Shuzhou
+  - family-names: Ikuhara
+    given-names: Yuichi
+  - family-names: Sui
+    given-names: Jiehe
+    affiliation: "State Key Laboratory of Advanced Welding and Joining, Harbin Institute of Technology, Harbin 150001, China"
