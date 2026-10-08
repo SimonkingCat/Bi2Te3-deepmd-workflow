@@ -1,12 +1,12 @@
 cff-version: 1.2.0
 message: "If you use this repository, please cite the archived release."
-title: "Bi2Te3 Deep Potential Workflow Package for Ultra-Flexibility Merges High Power Density in Single-Crystal Bi2Te3 Film Thermoelectric Generators"
+title: "Bi2Te3 Deep Potential Workflow Package for Superior flexibility merges high power density in single-crystal Bi2Te3 film thermoelectric generators"
 type: software
 version: 1.0.1
 date-released: 2026-08-12
 doi: 10.5281/zenodo.21898917
 repository-code: "https://github.com/SimonkingCat/Bi2Te3-deepmd-workflow"
-abstract: "Computational workflow, model metadata, representative inputs, and atomistic simulation outputs for the Bi2Te3 DeepMD/DPGEN/LAMMPS/VASP calculations used in the associated Nature Communications manuscript."
+abstract: "Computational workflow, model metadata, representative inputs, and atomistic simulation outputs for the Bi2Te3 DeepMD/DPGEN/LAMMPS/VASP calculations used in the associated Nature Communications paper."
 keywords:
   - Bi2Te3
   - bismuth telluride
@@ -20,3 +20,45 @@ authors:
   - family-names: Niu
     given-names: Junbo
     affiliation: "School of Materials Science and Engineering, Nanyang Technological University, 50 Nanyang Avenue, Singapore 639798, Singapore"
+references:
+  - type: article
+    title: "Superior flexibility merges high power density in single-crystal Bi2Te3 film thermoelectric generators"
+    doi: 10.1038/s41467-026-77574-1
+    journal: "Nature Communications"
+    year: 2026
+    date-published: 2026-09-07
+    authors:
+      - family-names: Niu
+        given-names: Jitao
+      - family-names: Dong
+        given-names: Xingyan
+      - family-names: Zhu
+        given-names: Yu-Ke
+      - family-names: Niu
+        given-names: Junbo
+      - family-names: Liu
+        given-names: Ming
+      - family-names: Luo
+        given-names: Ding
+      - family-names: Zhang
+        given-names: Le
+      - family-names: Du
+        given-names: Zhengfengyi
+      - family-names: Gong
+        given-names: Yuxiang
+      - family-names: Guo
+        given-names: Muchun
+      - family-names: Guo
+        given-names: Zhentao
+      - family-names: Zhang
+        given-names: Pengyuan
+      - family-names: Ma
+        given-names: Hongrui
+      - family-names: Lan
+        given-names: Mingdi
+      - family-names: Guo
+        given-names: Fengkai
+      - family-names: Liu
+        given-names: Zihang
+      - family-names: Sui
+        given-names: Jiehe
