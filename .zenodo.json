@@ -1,7 +1,7 @@
 {
-  "title": "Bi2Te3 Deep Potential Workflow Package for Ultra-Flexibility Merges High Power Density in Single-Crystal Bi2Te3 Film Thermoelectric Generators",
+  "title": "Bi2Te3 Deep Potential Workflow Package for Superior flexibility merges high power density in single-crystal Bi2Te3 film thermoelectric generators",
   "upload_type": "software",
-  "description": "Computational workflow, model metadata, representative inputs, and atomistic simulation outputs for the Bi2Te3 DeepMD/DPGEN/LAMMPS/VASP calculations used in the associated Nature Communications manuscript.",
+  "description": "Computational workflow, model metadata, representative inputs, and atomistic simulation outputs for the Bi2Te3 DeepMD/DPGEN/LAMMPS/VASP calculations used in the associated Nature Communications paper.",
   "creators": [
     {
       "name": "Niu, Junbo",
@@ -25,6 +25,11 @@
       "identifier": "https://github.com/SimonkingCat/Bi2Te3-deepmd-workflow",
       "relation": "isSupplementTo",
       "scheme": "url"
+    },
+    {
+      "identifier": "10.1038/s41467-026-77574-1",
+      "relation": "isSupplementTo",
+      "scheme": "doi"
     }
   ]
 }

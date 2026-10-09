@@ -45,10 +45,13 @@ Inside `Bi2Te3/`:
 ## Citation and archival release
 
 This repository contains the code/workflow materials associated with the
-Nature Communications manuscript:
+published Nature Communications paper:
 
-> Ultra-Flexibility Merges High Power Density in Single-Crystal Bi2Te3 Film
-> Thermoelectric Generators
+> Superior flexibility merges high power density in single-crystal Bi2Te3 film
+> thermoelectric generators
+
+- Paper DOI: https://doi.org/10.1038/s41467-026-77574-1
+- Published: 7 September 2026
 
 The citable archival release is available through Zenodo:
 
@@ -56,7 +59,18 @@ The citable archival release is available through Zenodo:
 - GitHub release: https://github.com/SimonkingCat/Bi2Te3-deepmd-workflow/releases/tag/v1.0.1
 
 The repository includes `CITATION.cff` for GitHub citation metadata and
-`.zenodo.json` for Zenodo release metadata.
+`.zenodo.json` for Zenodo release metadata. The software archive and paper have
+separate DOIs; the software author metadata remains separate from the paper's
+author list.
+
+These publication metadata corrections do not change the v1.0.1 release or its
+archived files. Merging them on GitHub does not update the existing Zenodo record.
+The record owner can correct the title, description, and related paper DOI on
+Zenodo without changing the archive DOI. To archive a new repository snapshot,
+create a new release and Zenodo version with its own version DOI; do not replace
+the v1.0.1 tag or reuse its DOI for changed files. See the Zenodo guidance on
+[editing metadata](https://help.zenodo.org/docs/deposit/manage-records/) and
+[versioning](https://help.zenodo.org/docs/deposit/manage-versions/).
 
 ## Notes
 
